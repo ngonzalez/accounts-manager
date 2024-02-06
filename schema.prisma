@@ -1,0 +1,102 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model ar_internal_metadata {
+  key        String   @id @db.VarChar
+  value      String?  @db.VarChar
+  created_at DateTime @db.Timestamp(6)
+  updated_at DateTime @db.Timestamp(6)
+}
+
+model audio_files {
+  id                BigInt    @id @default(autoincrement())
+  folder_id         Int
+  name              String    @db.VarChar
+  format_info       String    @db.VarChar
+  artist            String?   @db.VarChar
+  title             String?   @db.VarChar
+  album             String?   @db.VarChar
+  genre             String?   @db.VarChar
+  year              String?   @db.VarChar
+  bitrate           Int?
+  channels          Int?
+  length_in_seconds Int?
+  sample_rate       Int?
+  created_at        DateTime? @db.Timestamp(6)
+  updated_at        DateTime? @db.Timestamp(6)
+  file_uid          String?   @db.VarChar
+  file_name         String?   @db.VarChar
+  deleted_at        DateTime? @db.Timestamp(6)
+  data_url          String?   @unique(map: "index_audio_files_on_data_url") @db.VarChar
+
+  @@index([folder_id], map: "index_audio_files_on_folder_id")
+  @@index([name], map: "index_audio_files_on_name")
+}
+
+model folders {
+  id                BigInt    @id @default(autoincrement())
+  name              String    @unique(map: "index_folders_on_name") @db.VarChar
+  folder            String?   @db.VarChar
+  details           String?
+  formatted_name    String?   @db.VarChar
+  created_at        DateTime? @db.Timestamp(6)
+  updated_at        DateTime? @db.Timestamp(6)
+  deleted_at        DateTime? @db.Timestamp(6)
+  subfolder         String?   @db.VarChar
+  year              String?   @db.VarChar
+  source            String?   @db.VarChar
+  folder_created_at DateTime? @db.Timestamp(6)
+  folder_updated_at DateTime? @db.Timestamp(6)
+  data_url          String?   @unique(map: "index_folders_on_data_url") @db.VarChar
+}
+
+model friendly_id_slugs {
+  id             BigInt    @id @default(autoincrement())
+  slug           String    @db.VarChar
+  sluggable_id   Int
+  sluggable_type String?   @db.VarChar(50)
+  scope          String?   @db.VarChar
+  created_at     DateTime? @db.Timestamp(6)
+
+  @@unique([slug, sluggable_type, scope], map: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope")
+  @@index([slug, sluggable_type], map: "index_friendly_id_slugs_on_slug_and_sluggable_type")
+  @@index([sluggable_id], map: "index_friendly_id_slugs_on_sluggable_id")
+  @@index([sluggable_type], map: "index_friendly_id_slugs_on_sluggable_type")
+}
+
+model images {
+  id         BigInt    @id @default(autoincrement())
+  folder_id  Int
+  file_uid   String    @db.VarChar
+  file_name  String    @db.VarChar
+  created_at DateTime? @db.Timestamp(6)
+  updated_at DateTime? @db.Timestamp(6)
+  deleted_at DateTime? @db.Timestamp(6)
+  thumb_uid  String?   @db.VarChar
+  type       String?   @db.VarChar
+
+  @@index([folder_id], map: "index_images_on_folder_id")
+}
+
+model schema_migrations {
+  version String @id @db.VarChar
+}
+
+model versions {
+  id             BigInt    @id @default(autoincrement())
+  item_type      String    @db.VarChar
+  item_id        Int
+  event          String    @db.VarChar
+  whodunnit      String?   @db.VarChar
+  object         String?
+  created_at     DateTime? @db.Timestamp(6)
+  object_changes String?
+
+  @@index([item_type, item_id], map: "index_versions_on_item_type_and_item_id")
+}
