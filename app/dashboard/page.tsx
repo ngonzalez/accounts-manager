@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { inter } from '@/app/ui/fonts';
 import axios from "axios";
