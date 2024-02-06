@@ -1,12 +1,15 @@
 'use client';
 
+import { useState } from 'react';
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { inter } from '@/app/ui/fonts';
 import axios from "axios";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  let apiResponse = [];
-  let results = await axios.post(
+
+  let [response, setResponse] = useState([])
+
+  await axios.post(
     "http://127.0.0.1:3000/graphql",
     {
       // Stuck here on searchType
@@ -23,7 +26,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       `,
     }
   ).then((result) => {
-    console.debug(result.data);
+    response = result.data;
   });
+
+  console.log(response);
 
 }
