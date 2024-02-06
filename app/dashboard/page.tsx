@@ -2,6 +2,7 @@
 
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { inter } from '@/app/ui/fonts';
+import { Card } from '@/app/ui/dashboard/cards';
 import axios from "axios";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -27,16 +28,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   return (
     <main>
-      <ul>
-        {response.data.accounts.map((account) => (
-          <li key={account.id}>
-            <h3>{account.name}</h3>
-            <p>{account.email}</p>
-            <p>{account.interests}</p>
-            <hr />
-          </li>
-        ))}
-      </ul>
-    </main>
+       <h1 className={`${inter.className} mb-4 text-xl md:text-2xl`}>
+         Dashboard
+       </h1>
+       <div className={`${inter.className} grid gap-6 sm:grid-cols-2 lg:grid-cols-4`}>
+         {<Card
+           title="Total Accounts"
+           value={response.data.accounts.length}
+           type="invoices"
+         />}
+       </div>
+     </main>
   )
 }
