@@ -10,7 +10,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   let response = await axios.post(
     "http://127.0.0.1:3000/graphql",
     {
-      // Stuck here on searchType
       query: `
         query Account {
           accounts {
@@ -41,5 +40,4 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       </ul>
     </main>
   )
-
 }
