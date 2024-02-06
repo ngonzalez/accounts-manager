@@ -7,9 +7,7 @@ import axios from "axios";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
-  let [response, setResponse] = useState([])
-
-  await axios.post(
+  let response = await axios.post(
     "http://127.0.0.1:3000/graphql",
     {
       // Stuck here on searchType
@@ -25,10 +23,23 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
       `,
     }
-  ).then((result) => {
-    response = result.data;
+  ).then(function(accounts_json) {
+    return accounts_json.data;
   });
 
-  console.log(response);
+  return (
+    <main>
+      <ul>
+        {response.data.accounts.map((account) => (
+          <li key={account.id}>
+            <h3>{account.name}</h3>
+            <p>{account.email}</p>
+            <p>{account.interests}</p>
+            <hr />
+          </li>
+        ))}
+      </ul>
+    </main>
+  )
 
 }
