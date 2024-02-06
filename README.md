@@ -8,7 +8,7 @@ npm install
 ```
 npm run dev
 ```
-<img width="550" alt="Screenshot 2024-02-06 at 10 22 50 AM" src="https://github.com/ngonzalez/accounts-manager/assets/26479/1c7ed42e-5f3d-4a7a-87b0-5579d473f010">
+<img width="503" alt="Screenshot 2024-02-06 at 2 02 40 PM" src="https://github.com/ngonzalez/accounts-manager/assets/26479/05a1f1ee-044b-44b0-b2b6-9c16fa88bcbf">
 
 #### Dashboard: Display Accounts
 
