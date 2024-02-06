@@ -8,9 +8,9 @@ npm install
 ```
 npm run dev
 ```
+<img width="550" alt="Screenshot 2024-02-06 at 10 22 50 AM" src="https://github.com/ngonzalez/accounts-manager/assets/26479/1c7ed42e-5f3d-4a7a-87b0-5579d473f010">
 
-#### Fetch Accounts
 
-<img width="525" alt="Screenshot 2024-02-06 at 12 57 50 PM" src="https://github.com/ngonzalez/accounts-manager/assets/26479/ff813ca7-b7e1-4c25-ae12-6789827ebbd1">
+#### Dashboard: Display Accounts
 
-Accounts for clients and prospects are collected from GraphQL results
+<img width="861" alt="Screenshot 2024-02-06 at 2 00 21 PM" src="https://github.com/ngonzalez/accounts-manager/assets/26479/458c6089-11ee-4481-8e67-f21e85e69fcd">
