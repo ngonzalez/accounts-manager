@@ -1,8 +1,10 @@
+'use client';
+
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { inter } from '@/app/ui/fonts';
 import { gql, useQuery } from '@apollo/client';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const GET_ACCOUNTS = gql`
     query Account {
       accounts {
