@@ -1,11 +1,10 @@
-"use client";
+'use client';
 
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { inter } from '@/app/ui/fonts';
 import { Card } from '@/app/ui/dashboard/cards';
-import { gql, useQuery } from "@apollo/client";
-import client from "@/app/lib/apollo";
-import React from "react";
+import { gql, useQuery } from '@apollo/client';
+import client from '@/app/lib/apollo';
 import {
   Spacer,
   Table,
@@ -14,11 +13,10 @@ import {
   TableColumn,
   TableRow,
   TableCell,
-} from "@nextui-org/react";
+} from '@nextui-org/react';
 
 export default async function handler(req: NextApiRequest,
                                       res: NextApiResponse) {
-
   const QUERY = gql`
     query Account {
       accounts {
