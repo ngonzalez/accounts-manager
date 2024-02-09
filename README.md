@@ -12,4 +12,4 @@ npm run dev
 
 #### Dashboard: Display Accounts
 
-<img width="861" alt="Screenshot 2024-02-06 at 2 00 21 PM" src="https://github.com/ngonzalez/accounts-manager/assets/26479/458c6089-11ee-4481-8e67-f21e85e69fcd">
+<img width="707" alt="Screenshot 2024-02-09 at 10 00 50 PM" src="https://github.com/ngonzalez/accounts-manager/assets/26479/7ad7cac6-0f85-4052-9c89-143ef6351eda">
