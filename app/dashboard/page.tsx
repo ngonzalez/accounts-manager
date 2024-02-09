@@ -4,7 +4,6 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { inter } from '@/app/ui/fonts';
 import { Card } from '@/app/ui/dashboard/cards';
 import { gql, useQuery } from '@apollo/client';
-import client from '@/app/lib/apollo';
 import {
   Spacer,
   Table,
@@ -14,6 +13,7 @@ import {
   TableRow,
   TableCell,
 } from '@nextui-org/react';
+import client from '@/app/lib/apollo';
 
 export default async function handler(req: NextApiRequest,
                                       res: NextApiResponse) {
